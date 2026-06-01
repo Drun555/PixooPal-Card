@@ -1,0 +1,24 @@
+name: Create Automated Release
+
+on:
+  push:
+    tags:
+      - 'v*' # Triggers whenever you push a tag starting with 'v' (e.g., v1.0.0)
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Allows the action to create the release
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Generate and Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          artifacts: dist/pixoopal-card.js
+          generateReleaseNotes: true # Automatically compiles commit titles into release notes
+          token: ${{ secrets.GITHUB_TOKEN }}
