@@ -267,7 +267,7 @@ class PixooPalCard extends HTMLElement {
     this.shadowRoot.innerHTML = `
       <style>
         :host { display: block; }
-        ha-card { padding: 0 16px 16px; }
+        ha-card { padding: 16px; }
         .rows { display: grid; gap: 12px; }
         .row { display: grid; gap: 10px; align-items: end; }
         label { display: grid; gap: 6px; min-width: 0; color: var(--secondary-text-color); font-size: .86rem; font-weight: 600; }
