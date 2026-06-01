@@ -26,6 +26,10 @@ class PixooPalCard extends HTMLElement {
   }
 
   getCardSize() {
+    if (!this.error && this.clockfaces && this.inputRows().length === 0) {
+      return 0;
+    }
+
     return 4;
   }
 
@@ -251,6 +255,15 @@ class PixooPalCard extends HTMLElement {
   render() {
     if (!this.shadowRoot) return;
 
+    const rows = this.inputRows();
+    if (!this.error && this.clockfaces && rows.length === 0) {
+      this.style.display = "none";
+      this.shadowRoot.innerHTML = "";
+      return;
+    }
+
+    this.style.display = "";
+
     this.shadowRoot.innerHTML = `
       <style>
         :host { display: block; }
@@ -277,15 +290,6 @@ class PixooPalCard extends HTMLElement {
     `;
 
     const container = this.shadowRoot.querySelector(".rows");
-    const rows = this.inputRows();
-
-    if (!rows.length) {
-      const empty = document.createElement("div");
-      empty.className = "empty";
-      empty.textContent = this.error ? "" : "No visible inputs for the active clockface.";
-      container.append(empty);
-      return;
-    }
 
     for (const row of rows) {
       const item = document.createElement("div");
