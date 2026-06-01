@@ -26,3 +26,14 @@ You can find it inside .storage/core.config_entries
 type: custom:pixoopal-card
 entry_id: YOUR_CONFIG_ENTRY_ID
 ```
+
+## Example
+
+I crafted a little vertical-stack for myself. Feel free to use it.
+
+Used cards:
+[Notify Card](https://github.com/bernikr/lovelace-notify-card)
+[WebRTC Card](https://github.com/AlexxIT/WebRTC)
+[Card Mod](https://github.com/thomasloven/lovelace-card-mod)
+
+<img width="552" height="1055" alt="image" src="https://github.com/user-attachments/assets/8310f9be-5972-4fdc-9169-12857d923e55" />
